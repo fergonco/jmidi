@@ -52,7 +52,7 @@ public class Score {
 		File file = new File("/tmp/a.mid");
 		Score score = new Score(file);
 		Track track = new Track();
-		track.setTempo(60);
+		track.setTempo(100);
 		track.setInstrument(Instrument.PIANO);
 		for (int i = 0; i < 10; i++) {
 			track.addNote(new NoteImpl(Note.C4, Duration.QUARTER, 127));
@@ -60,7 +60,7 @@ public class Score {
 			track.addNote(new NoteImpl(Note.G4, Duration.EIGHTH.dot(), 127));
 			track.addNote(new Chord(Duration.QUARTER, 127, Note.C4, Note.E4, Note.G4));
 		}
-		score.addTracks(track);
+		// score.addTracks(track);
 		track = new Track();
 		track.setInstrument(Instrument.ACOUSTIC_GUITAR);
 		track.addNote(new NoteImpl(Note.C4, Duration.SIXTEENTH, 0));
@@ -69,6 +69,24 @@ public class Score {
 			track.addNote(new NoteImpl(Note.E4, Duration.EIGHTH, 127));
 			track.addNote(new NoteImpl(Note.G4, Duration.EIGHTH.dot(), 127));
 			track.addNote(new Chord(Duration.QUARTER, 127, Note.C4, Note.E4, Note.G4));
+		}
+		// score.addTracks(track);
+		track = new Track();
+		for (int i = 0; i < 10; i++) {
+			track.addNote(
+					new DrumNoteImpl(Duration.EIGHTH, new int[] { 127, 97 }, new int[] { Note.DRUMS_Closed_Hi_Hat }));
+			track.addNote(new DrumNoteImpl(Duration.EIGHTH, new int[] { 96 }, new int[] { Note.DRUMS_Closed_Hi_Hat }));
+			track.addNote(
+					new DrumNoteImpl(Duration.EIGHTH, new int[] { 127, 127 }, new int[] { Note.DRUMS_Closed_Hi_Hat }));
+			track.addNote(new DrumNoteImpl(Duration.EIGHTH, new int[] { 96 }, new int[] { Note.DRUMS_Closed_Hi_Hat }));
+		}
+		score.addTracks(track);
+		track = new Track();
+		for (int i = 0; i < 10; i++) {
+			track.addNote(new DrumNoteImpl(Duration.QUARTER, new int[] { 127, 97 },
+					new int[] { Note.DRUMS_Acoustic_Bass_Drum }));
+			track.addNote(new DrumNoteImpl(Duration.QUARTER, new int[] { 127, 127 },
+					new int[] { Note.DRUMS_Acoustic_Snare }));
 		}
 		score.addTracks(track);
 		score.write();

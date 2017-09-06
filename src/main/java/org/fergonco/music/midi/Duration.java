@@ -25,9 +25,8 @@ public class Duration {
 		return multiplier;
 	}
 
-	public void add(Duration duration) {
-		// TODO Auto-generated method stub
-
+	public void add(double multiplier) {
+		this.multiplier += multiplier;
 	}
 
 }

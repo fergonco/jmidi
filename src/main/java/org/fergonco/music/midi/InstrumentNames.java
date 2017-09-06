@@ -15,6 +15,9 @@ public class InstrumentNames {
 	}
 
 	static {
+		// Any should do for writing midi
+		nameCode.put("DRUMS", Instrument.PIANO);
+
 		nameCode.put("PIANO", Instrument.PIANO);
 		nameCode.put("HONKYTONK", Instrument.HONKYTONK);
 		nameCode.put("ELECTRIC_PIANO", Instrument.ELECTRIC_PIANO);

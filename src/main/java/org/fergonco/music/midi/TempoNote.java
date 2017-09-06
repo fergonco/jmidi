@@ -26,9 +26,4 @@ public class TempoNote implements Note {
 		}
 	}
 
-	@Override
-	public void transpose(int i) {
-		throw new UnsupportedOperationException("Unsupported");
-	}
-
 }

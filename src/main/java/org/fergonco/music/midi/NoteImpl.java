@@ -44,9 +44,4 @@ public class NoteImpl extends AbstractNote implements Note {
 		os.write(0);
 	}
 
-	@Override
-	public void transpose(int i) {
-		this.pitch += i;
-	}
-
 }
