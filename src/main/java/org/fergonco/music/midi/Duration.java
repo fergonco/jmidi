@@ -21,7 +21,7 @@ public class Duration {
 		return new Duration(multiplier + multiplier / 2);
 	}
 
-	public double getNumBeats() {
+	public double getMultipliler() {
 		return multiplier;
 	}
 
