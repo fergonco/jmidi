@@ -44,4 +44,9 @@ public class PolyphonicNote extends AbstractNote implements Note {
 
 	}
 
+	@Override
+	public void addDuration(Duration duration) {
+		this.duration.add(duration);
+	}
+
 }

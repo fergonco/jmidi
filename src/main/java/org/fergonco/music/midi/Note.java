@@ -64,4 +64,6 @@ public interface Note {
 
 	void write(int trackIndex, int ticksPerQuarterNote, OutputStream os) throws IOException;
 
+	void addDuration(Duration duration);
+
 }

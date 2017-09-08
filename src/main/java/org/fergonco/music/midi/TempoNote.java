@@ -26,4 +26,9 @@ public class TempoNote implements Note {
 		}
 	}
 
+	@Override
+	public void addDuration(Duration duration) {
+		// noop
+	}
+
 }

@@ -25,8 +25,12 @@ public class Duration {
 		return multiplier;
 	}
 
-	public void add(double multiplier) {
-		this.multiplier += multiplier;
+	public void add(Duration duration) {
+		this.multiplier += duration.getMultipliler();
+	}
+
+	public Duration cloneDuration() {
+		return new Duration(multiplier);
 	}
 
 }
