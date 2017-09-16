@@ -12,8 +12,7 @@ public class Track {
 	private ArrayList<Note> notes = new ArrayList<>();
 	private int instrument = 0;
 
-	public void write(int ticksPerQuarterNote, int trackIndex, OutputStream os)
-			throws IOException {
+	public void write(int ticksPerQuarterNote, int trackIndex, OutputStream os) throws IOException {
 		os.write("MTrk".getBytes());
 
 		byte[] trackBytes = getTrackBytes(ticksPerQuarterNote, trackIndex);
@@ -22,8 +21,7 @@ public class Track {
 		os.write(trackBytes);
 	}
 
-	private byte[] getTrackBytes(int ticksPerQuarterNote, int trackIndex)
-			throws IOException {
+	private byte[] getTrackBytes(int ticksPerQuarterNote, int trackIndex) throws IOException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 
 		if (instrument != 0) {
@@ -56,6 +54,10 @@ public class Track {
 
 	public void setTempo(double tempo) {
 		notes.add(new TempoNote(tempo));
+	}
+
+	public Note getLastNote() {
+		return notes.get(notes.size() - 1);
 	}
 
 }
