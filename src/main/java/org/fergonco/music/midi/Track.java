@@ -54,7 +54,7 @@ public class Track {
 		this.instrument = instrument;
 	}
 
-	public void setTempo(int tempo) {
+	public void setTempo(double tempo) {
 		notes.add(new TempoNote(tempo));
 	}
 

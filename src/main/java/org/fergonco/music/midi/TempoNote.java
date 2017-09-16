@@ -9,8 +9,8 @@ public class TempoNote implements Note {
 
 	private int msPerQuarterNote;
 
-	public TempoNote(int tempo) {
-		this.msPerQuarterNote = (int) (60000000.0 / tempo);
+	public TempoNote(double tempo) {
+		this.msPerQuarterNote = (int) (60000000 / tempo);
 	}
 
 	@Override
