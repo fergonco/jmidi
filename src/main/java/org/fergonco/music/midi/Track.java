@@ -57,7 +57,11 @@ public class Track {
 	}
 
 	public Note getLastNote() {
-		return notes.get(notes.size() - 1);
+		if (notes.size() == 0) {
+			return null;
+		} else {
+			return notes.get(notes.size() - 1);
+		}
 	}
 
 }
