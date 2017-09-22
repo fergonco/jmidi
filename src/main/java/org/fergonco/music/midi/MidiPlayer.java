@@ -19,9 +19,14 @@ public class MidiPlayer {
 	}
 
 	public static Sequencer play(File file) throws MidiUnavailableException, IOException, InvalidMidiDataException {
+		InputStream is = new BufferedInputStream(new FileInputStream(file));
+		return play(is);
+	}
+
+	public static Sequencer play(InputStream is)
+			throws MidiUnavailableException, IOException, InvalidMidiDataException {
 		Sequencer sequencer = MidiSystem.getSequencer();
 		sequencer.open();
-		InputStream is = new BufferedInputStream(new FileInputStream(file));
 		sequencer.setSequence(is);
 		sequencer.start();
 		return sequencer;

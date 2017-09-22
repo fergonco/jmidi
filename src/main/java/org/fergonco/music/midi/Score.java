@@ -16,9 +16,11 @@ public class Score {
 	private ArrayList<Track> tracks = new ArrayList<>();
 	private int ticksPerQuarterNote = 128;
 
+	public Score(OutputStream os) throws FileNotFoundException {
+		this.os = os;
+	}
+
 	public Score(File file) throws FileNotFoundException {
-		// Write a type 1 midi
-		// write a channel for each instrument
 		os = new BufferedOutputStream(new FileOutputStream(file));
 	}
 
