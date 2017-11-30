@@ -66,4 +66,7 @@ public interface Note {
 
 	void addDuration(Duration duration);
 
+	MidiEvents getOnMidiEvents(int ticksPerQuarterNote);
+
+	MidiEvents getOffMidiEvents();
 }

@@ -31,4 +31,15 @@ public class TempoNote implements Note {
 		// noop
 	}
 
+	@Override
+	public MidiEvents getOnMidiEvents(int ticksPerQuarterNote) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public MidiEvents getOffMidiEvents() {
+		throw new UnsupportedOperationException();
+	}
+
+
 }

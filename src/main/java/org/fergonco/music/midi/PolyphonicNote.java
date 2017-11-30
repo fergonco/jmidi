@@ -6,11 +6,10 @@ import java.io.OutputStream;
 public class PolyphonicNote extends AbstractNote implements Note {
 
 	private int[] pitches;
-	private Duration duration;
 	private int[] volumes;
 
 	public PolyphonicNote(Duration duration, int[] volumes, int[] pitches) {
-		this.duration = duration;
+		super(duration);
 		this.volumes = volumes;
 		this.pitches = pitches;
 	}
@@ -47,6 +46,20 @@ public class PolyphonicNote extends AbstractNote implements Note {
 	@Override
 	public void addDuration(Duration duration) {
 		this.duration.add(duration);
+	}
+
+	@Override
+	public MidiEvents getOnMidiEvents(int ticksPerQuarterNote) {
+		return new MidiEvents(pitches, volumes, duration.getTicks(ticksPerQuarterNote));
+	}
+
+	@Override
+	public MidiEvents getOffMidiEvents() {
+		int[] mute = new int[volumes.length];
+		for (int i = 0; i < mute.length; i++) {
+			mute[i] = 0;
+		}
+		return new MidiEvents(pitches, mute, 0);
 	}
 
 }

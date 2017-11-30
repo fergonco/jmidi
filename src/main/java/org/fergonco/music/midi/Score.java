@@ -4,7 +4,6 @@ import static org.fergonco.music.midi.ByteUtils.bytes;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -12,19 +11,14 @@ import java.util.ArrayList;
 
 public class Score {
 
-	private OutputStream os;
 	private ArrayList<Track> tracks = new ArrayList<>();
-	private int ticksPerQuarterNote = 128;
+	public static int ticksPerQuarterNote = 128;
 
-	public Score(OutputStream os) throws FileNotFoundException {
-		this.os = os;
+	public void write(File file) throws IOException {
+		write(new BufferedOutputStream(new FileOutputStream(file)));
 	}
 
-	public Score(File file) throws FileNotFoundException {
-		os = new BufferedOutputStream(new FileOutputStream(file));
-	}
-
-	public void write() throws IOException {
+	public void write(OutputStream os) throws IOException {
 		try {
 			os.write("MThd".getBytes());
 			// standard midi file
@@ -50,9 +44,13 @@ public class Score {
 		}
 	}
 
+	public BeatIterator getBeatIterator(int i) {
+		return tracks.get(i).getBeatIterator(ticksPerQuarterNote);
+	}
+
 	public static void main(String[] args) throws Exception {
 		File file = new File("/tmp/a.mid");
-		Score score = new Score(file);
+		Score score = new Score();
 		Track track = new Track();
 		track.setTempo(100);
 		track.setInstrument(Instrument.PIANO);
@@ -91,7 +89,7 @@ public class Score {
 					new int[] { Note.DRUMS_Acoustic_Snare }));
 		}
 		score.addTracks(track);
-		score.write();
+		score.write(file);
 		MidiPlayer.play(file);
 	}
 

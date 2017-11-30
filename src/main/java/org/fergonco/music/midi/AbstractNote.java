@@ -4,7 +4,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-public class AbstractNote {
+public abstract class AbstractNote implements Note {
+	
+	protected Duration duration;
+	
+	public AbstractNote(Duration duration) {
+		this.duration = duration;
+	}
 
 	protected void write(OutputStream os, int timestamp) throws IOException {
 		ArrayList<Byte> bytes = new ArrayList<>();
@@ -25,4 +31,7 @@ public class AbstractNote {
 		}
 	}
 
+	public Duration getDuration() {
+		return duration;
+	}
 }

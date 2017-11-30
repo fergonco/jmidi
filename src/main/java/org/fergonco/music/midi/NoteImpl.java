@@ -6,12 +6,11 @@ import java.io.OutputStream;
 public class NoteImpl extends AbstractNote implements Note {
 
 	private int pitch;
-	private Duration duration;
 	private int volume;
 
 	public NoteImpl(int pitch, Duration duration, int volume) {
+		super(duration);
 		this.pitch = pitch;
-		this.duration = duration;
 		this.volume = volume;
 	}
 
@@ -47,6 +46,16 @@ public class NoteImpl extends AbstractNote implements Note {
 	@Override
 	public void addDuration(Duration duration) {
 		this.duration.add(duration);
+	}
+
+	@Override
+	public MidiEvents getOnMidiEvents(int ticksPerQuarterNote) {
+		return new MidiEvents(new int[] { pitch }, new int[] { volume }, duration.getTicks(ticksPerQuarterNote));
+	}
+
+	@Override
+	public MidiEvents getOffMidiEvents() {
+		return new MidiEvents(new int[] { pitch }, new int[] { 0 }, 0);
 	}
 
 }

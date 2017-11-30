@@ -43,6 +43,10 @@ public class Track {
 
 		return os.toByteArray();
 	}
+	
+	public BeatIterator getBeatIterator(int ticksPerQuarterNote) {
+		return new BeatIterator(notes, ticksPerQuarterNote);
+	}
 
 	public void addNote(Note note) {
 		notes.add(note);
