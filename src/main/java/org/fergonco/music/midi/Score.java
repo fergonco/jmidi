@@ -14,7 +14,7 @@ public class Score {
 
 	private OutputStream os;
 	private ArrayList<Track> tracks = new ArrayList<>();
-	private int ticksPerQuarterNote = 128;
+	public static int ticksPerQuarterNote = 128;
 
 	public Score(OutputStream os) throws FileNotFoundException {
 		this.os = os;
