@@ -1,10 +1,13 @@
 package org.fergonco.music.midi;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class InstrumentNames {
 
-	private static final HashMap<String, Integer> nameCode = new HashMap<>();
+	private static final Map<String, Integer> nameCode = new LinkedHashMap<>();
 
 	public static int getInstrument(String instrumentName) {
 		Integer instrumentCode = nameCode.get(instrumentName.toUpperCase());
@@ -14,6 +17,10 @@ public class InstrumentNames {
 		return instrumentCode;
 	}
 
+	public static Set<String> getInstrumentNames() {
+		return nameCode.keySet();
+	}
+	
 	static {
 		// Any should do for writing midi
 		nameCode.put("DRUMS", Instrument.PIANO);
